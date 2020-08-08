@@ -60,3 +60,23 @@ class TestGameOfLifeStillLife(unittest.TestCase):
         evolved_board = game.evolve(board, max_val)
 
         assert boards_are_equal(board, evolved_board)
+
+
+class TestGameOfLifeOscillators(unittest.TestCase):
+    def test_blinker_state1_evolves_to_state2(self):
+        max_val, board = game.read_seed(f"{CURRENT_DIR}/test_images/oscillators_blinker_state1.pgm")
+
+        _, expected_board = game.read_seed(f"{CURRENT_DIR}/test_images/oscillators_blinker_state2.pgm")
+
+        evolved_board = game.evolve(board, max_val)
+
+        assert boards_are_equal(expected_board, evolved_board)
+
+    def test_blinker_state2_evolves_to_state1(self):
+        max_val, board = game.read_seed(f"{CURRENT_DIR}/test_images/oscillators_blinker_state2.pgm")
+
+        _, expected_board = game.read_seed(f"{CURRENT_DIR}/test_images/oscillators_blinker_state1.pgm")
+
+        evolved_board = game.evolve(board, max_val)
+
+        assert boards_are_equal(expected_board, evolved_board)
